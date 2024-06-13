@@ -22,13 +22,6 @@ router.post(
 
             const { Name, email, password } = req.body;
 
-            const find = await Signup.findOne({ email });
-            if (find) {
-                return res.status(404).json({
-                    message: "User already found",
-                    status: false
-                });
-            } else {
                 const newUser = new Signup({
                     Name,
                     email,
@@ -42,9 +35,9 @@ router.post(
                     token: token,
                     status: true
                 });
-            }
+            
         } catch (error) {
-            console.error(error); // Add error logging
+            console.error(error); 
             return res.status(500).json({
                 message: "Internal server error",
                 status: false
