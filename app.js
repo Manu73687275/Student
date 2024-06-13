@@ -16,11 +16,7 @@ const mongoURI = process.env.MONGO_URL;
 const connectToDB = () => {
     if (mongoURI) {
         mongoose
-            .connect(mongoURI, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-                serverSelectionTimeoutMS: 10000  // Set the timeout to 10 seconds
-            })
+            .connect(mongoURI)
             .then(() => console.log("MongoDB connected successfully"))
             .catch((err) => console.error("Error connecting to MongoDB:", err));
     } else {
