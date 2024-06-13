@@ -77,7 +77,8 @@ router.post(
             console.error(error); // Add error logging
             return res.status(500).json({
                 message: "Internal server error",
-                status: false
+                status: false,
+                msg:error
             });
         }
     }
