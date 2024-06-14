@@ -27,7 +27,7 @@ const connectToDB = () => {
 
 app.get("/",(req,res)=>{
     app.use(express.static(path.resolve(__dirname,"frontend","dist")));
-    res.sendFile(path.resolve(__dirname,"frontend","dist","app.jsx"));
+    res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"));
 })
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
