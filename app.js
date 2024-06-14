@@ -3,6 +3,7 @@ const cors = require("cors");
 const userRoutes = require("./routes/user.routes");
 const signupAndLoginRoutes = require("./routes/signup.routes");
 const mongoose = require("mongoose");
+const path = require("path");
 require("dotenv").config();
 const app = express();
 
@@ -24,7 +25,10 @@ const connectToDB = () => {
     }
 };
 
-// Start the server
+app.get("/",(req,res)=>{
+    app.use(express.static(path.resolve(__dirname,"frontend","dist")));
+    res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"));
+})
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
